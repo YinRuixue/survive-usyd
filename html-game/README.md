@@ -2,6 +2,8 @@
 
 [Back to the project overview](../README.md) · [Python program guide](../backend/README.md)
 
+**[Play online](https://yinruixue.github.io/survive-usyd/)** — opens directly in your browser with no installation or account.
+
 This folder contains the game's **visual interface**: scenes, dialogue, menus, animation, music and artwork. For the complete Python project, start the game from the repository root:
 
 ```sh
@@ -33,6 +35,14 @@ Use `py` on Windows. Python runs the game rules and saves; the browser displays 
 Opening `index.html` directly uses the JavaScript interpreter and browser-local saves. This is separate from the Python version and its database. For assessment of the Python project, use the Python launch command above.
 
 A static web host or GitHub Pages cannot run the Python server. Keep this folder's assets and scripts together when downloading the project.
+
+## Published browser demo
+
+The online demo uses this same browser engine and local save store over HTTPS. Its entry page explicitly selects browser mode; it does not need a Python API. Saves remain in that browser and can be exported/imported through the game menus.
+
+From the repository root, run `python3 html-game/tools/build-web-demo.py` to create `output/web-demo/`. For local inspection, serve that generated directory with `python3 -m http.server 8874 --bind 127.0.0.1 --directory output/web-demo` and open `http://127.0.0.1:8874`.
+
+The [GitHub Pages workflow](../.github/workflows/deploy-web-demo.yml) builds, tests and publishes this directory automatically. It excludes developer utilities and player databases. The source `index.html` retains automatic local-file/Python selection, so the desktop Python launcher still works as before.
 
 ## Artwork and presentation images
 

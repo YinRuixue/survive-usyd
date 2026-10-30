@@ -12,7 +12,10 @@
   const audio=new SurviveAudio({onChange:refreshAudioControls});
   audio.music.id='background-music';audio.music.hidden=true;
   audio.music.setAttribute('aria-hidden','true');document.body.append(audio.music);
-  const backend=/^https?:$/.test(location.protocol)?new SurviveBackendClient(game):null;
+  // Published demos run locally in the browser, even when served over HTTPS.
+  // Keep HTTP-based Python play explicit rather than silently falling back on a failed API.
+  const browserDemo=document.querySelector('meta[name="survive-runtime"]')?.content==='browser';
+  const backend=!browserDemo&&/^https?:$/.test(location.protocol)?new SurviveBackendClient(game):null;
   const store=backend||new SurviveSaveStore(()=>localStorage,game);
   const saveMenu=new SurviveSaveMenu({stage,game,store,onLoad:saved=>{
     game.restore(saved);saveMenu.close(false);persist();render();
