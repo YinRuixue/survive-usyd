@@ -1,0 +1,29 @@
+backend/.venv/
+backend/data/
+**/__pycache__/
+*.pyc
+.DS_Store
+
+# Local credentials and runtime data
+.env
+.env.*
+*.sqlite3
+*.sqlite3-*
+*.db
+.venv/
+
+# Design exports, local source paths, and development history
+/output/
+/project-notes/
+/html-game/reference/
+/html-game/data/*.b64
+/html-game/data/asset-index.json
+/html-game/data/local-assets.json
+/html-game/tools/export-figma.js
+/html-game/tools/merge-export.py
+
+# Generated packages, reports, and local preview screenshots
+/*.zip
+/*preview.png
+/backend/test-results.json
+/html-game/*test-results.json

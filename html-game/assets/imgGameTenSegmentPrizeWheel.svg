@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="380" height="380" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="GAME / ten-segment prize wheel">
+<path id="Vector" d="M190 368C288.307 368 368 288.307 368 190C368 91.6933 288.307 12 190 12C91.6933 12 12 91.6933 12 190C12 288.307 91.6933 368 190 368Z" fill="#4E382B"/>
+<path id="Vector_2" d="M190 365C286.65 365 365 286.65 365 190C365 93.3502 286.65 15 190 15C93.3502 15 15 93.3502 15 190C15 286.65 93.3502 365 190 365Z" fill="#B48556"/>
+<path id="Vector_3" d="M190 190V20C225.9 20.0016 260.877 31.3679 289.92 52.47L190 190Z" fill="#D7B270" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_4" d="M190 190L289.92 52.47C318.966 73.5712 340.585 103.326 351.68 137.47L190 190Z" fill="#9CBBA0" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_5" d="M190 190L351.68 137.47C362.773 171.612 362.773 208.388 351.68 242.53L190 190Z" fill="#83ACBC" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_6" d="M190 190L351.68 242.53C340.585 276.674 318.966 306.429 289.92 327.53L190 190Z" fill="#C9A1A2" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_7" d="M190 190L289.92 327.53C260.877 348.632 225.9 359.998 190 360V190Z" fill="#E0C287" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_8" d="M190 190V360C154.1 359.998 119.123 348.632 90.08 327.53L190 190Z" fill="#8EAC8F" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_9" d="M190 190L90.08 327.53C61.0345 306.429 39.4149 276.674 28.32 242.53L190 190Z" fill="#9ABEC0" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_10" d="M190 190L28.32 242.53C17.2274 208.388 17.2274 171.612 28.32 137.47L190 190Z" fill="#D9A98D" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_11" d="M190 190L28.32 137.47C39.4149 103.326 61.0345 73.5712 90.08 52.47L190 190Z" fill="#B0C59A" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_12" d="M190 190L90.08 52.47C119.123 31.3679 154.1 20.0016 190 20V190Z" fill="#BDA5B4" stroke-width="3" stroke="#65472F"/>
+<path id="Vector_13" d="M190 226C209.882 226 226 209.882 226 190C226 170.118 209.882 154 190 154C170.118 154 154 170.118 154 190C154 209.882 170.118 226 190 226Z" fill="#5E8064" stroke-width="7" stroke="#4E382B"/>
+<path id="Vector_14" d="M190 206C198.837 206 206 198.837 206 190C206 181.163 198.837 174 190 174C181.163 174 174 181.163 174 190C174 198.837 181.163 206 190 206Z" fill="#F8E7C8"/>
+</g>
+</svg>

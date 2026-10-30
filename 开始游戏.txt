@@ -1,0 +1,19 @@
+Survive USYD — Python + HTML 完整版
+
+1. 双击 Start Game.command。
+2. 浏览器会自动打开 http://127.0.0.1:8765，开始或继续游戏。
+3. 游戏时保持启动窗口打开。结束后按 Control+C 停止服务。
+
+需要 Python 3.9 或以上，不用额外安装依赖。
+如果想从终端启动，在本文件所在文件夹运行：
+python3 backend/server.py --open-browser
+
+存档保存在 backend/data/survive.sqlite3，九个手动存档和自动存档相互独立。
+使用同一个浏览器及相同地址可继续之前的游戏。
+
+迁移以前直接打开 HTML 时的存档：
+刷新原来的 index.html 页面 → Load → Export saves。
+进入 Python 版 → Load → Import saves → 选择备份。
+导入只填补空槽位，不会覆盖已有存档。
+
+详细说明和接口文档：backend/README.md。

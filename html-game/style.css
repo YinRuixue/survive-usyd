@@ -1,0 +1,104 @@
+@font-face{font-family:"Pixelify Sans";font-style:normal;font-weight:400;src:url("assets/pixelify-400.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Pixelify Sans";font-style:normal;font-weight:700;src:url("assets/pixelify-700.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Noto Sans SC";font-style:normal;font-weight:400;src:url("assets/noto-400.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Noto Sans SC";font-style:normal;font-weight:700;src:url("assets/noto-700.ttf") format("truetype");font-display:swap}
+:root{color-scheme:dark;font-family:"Noto Sans SC",sans-serif;background:#211e1b;color:#f0ddbc}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center}
+#player{flex:1;width:100%;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#viewport{position:relative;flex-shrink:0;box-shadow:0 14px 70px #0007}
+#stage{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:top left;overflow:hidden;background:#e8dfd5;color:#443931}
+.scene{position:absolute;inset:0;width:1280px;height:720px;isolation:isolate}
+.node{position:absolute;box-sizing:border-box;pointer-events:none}
+.node.text{display:flex;flex-direction:column;white-space:pre-wrap;overflow-wrap:break-word}
+.text>span{width:100%;min-width:0}
+.paint{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.paint img{position:absolute;max-width:none;pointer-events:none;user-select:none}
+button.hotspot{pointer-events:auto;display:block;margin:0;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:inherit;border-radius:0;cursor:pointer;appearance:none}
+button.hotspot:hover::after{content:"";position:absolute;inset:0;border:2px solid #fff0d452;pointer-events:none}
+button.hotspot.dialogue:hover::after{border:0}
+button.hotspot:disabled{cursor:wait}
+button.hotspot:disabled:hover::after{border:0}
+.scene[data-wheel-state="spinning"] [data-node="65:130"]{will-change:transform}
+.wheel-winner{outline:3px solid #b3782f;outline-offset:2px;box-shadow:0 0 0 5px #f4d89b}
+button.hotspot:focus-visible{outline:4px solid #f9c36b;outline-offset:3px;z-index:20}
+.name-input{position:absolute;border:0;outline:0;padding:0;background:transparent;color:#73553c;font:17px "Noto Sans SC",sans-serif;line-height:32px;pointer-events:auto;z-index:8;border-radius:0}
+.name-input::placeholder{color:#a88c6b}
+.name-input:focus{box-shadow:0 2px 0 #6e957b}
+.name-input[aria-invalid="true"]{box-shadow:0 2px 0 #a13f32}
+.name-error{position:absolute;left:590px;top:391px;width:253px;text-align:right;color:#a13f32;font:700 12px/20px "Noto Sans SC",sans-serif;z-index:8}
+.game-menu-button{position:absolute;pointer-events:auto;border:2px solid #a48c6a;background:#f9eedb;box-shadow:4px 4px #4d39294a;color:#443931;font:700 18px "Pixelify Sans",sans-serif;cursor:pointer}
+.game-menu-button:hover{background:#e3e8d8;border-color:#6e957b}
+.game-menu-button:focus-visible{outline:3px solid #4b775a;outline-offset:3px}
+.title-continue{left:437px;top:644px;width:406px;height:40px;font-size:21px}
+.desk-save-button{width:143px;height:39px;text-align:left;padding-left:10px;font-size:18px}
+.desk-save-button::after{content:'›';position:absolute;right:10px;top:0;font:700 28px/34px "Pixelify Sans",sans-serif}
+.save-layer{position:absolute;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:#1819128c;pointer-events:auto}
+.save-panel{position:relative;width:1060px;height:612px;padding:22px 26px 18px;background:#f1dfbd;border:6px solid #8c6543;box-shadow:inset 0 0 0 3px #fff1d9,0 0 0 3px #543c2c,8px 10px 0 #21150955;color:#443931;display:flex;flex-direction:column}
+.save-header{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #bb9870;padding-bottom:10px;gap:24px}
+.save-header h1{margin:0;font:700 34px "Pixelify Sans",sans-serif}
+.save-close,.save-back{background:none;border:0;color:#66503c;font:700 19px "Pixelify Sans",sans-serif;cursor:pointer;padding:8px}
+.save-close:hover,.save-back:hover{color:#376a47;background:#dbdcbf}
+.save-intro{font:15px "Noto Sans SC",sans-serif;margin:10px 0 16px}
+.save-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:12px;flex:1;min-height:0}
+.save-slot{min-width:0;display:flex;flex-direction:column;align-items:stretch;text-align:left;padding:10px 14px;border:2px solid #b59a76;background:#fbf1df;box-shadow:3px 3px #83694d40;color:#443931;cursor:pointer}
+.save-slot:not(:disabled):hover{border-color:#52775b;background:#f5f3de;box-shadow:inset 0 0 0 1px #52775b,3px 3px #83694d40}
+.save-slot:disabled{cursor:default;background:#eaddc5;color:#967e64;box-shadow:none}
+.slot-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:6px}
+.slot-number{font:700 16px "Pixelify Sans",sans-serif;color:#7c654b}
+.slot-chapter{font:700 15px "Pixelify Sans",sans-serif;color:#426e51}
+.slot-name{font:700 20px "Pixelify Sans","Noto Sans SC",sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:25px}
+.slot-character,.slot-time,.slot-empty-hint{font:12px "Noto Sans SC",sans-serif;line-height:20px;color:#81694e}
+.slot-time{margin-top:auto;color:#786d5f}
+.slot-location{font:11px/16px "Noto Sans SC",sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#786d5f}
+.slot-empty-hint{margin-top:5px}
+.save-footer{display:flex;align-items:center;gap:14px;margin-top:14px;min-height:36px}
+.save-back{padding-left:0}
+.save-backup-tools{display:flex;justify-content:flex-end;gap:16px;margin-top:6px}
+.save-backup-button{border:0;background:none;color:#786d5f;text-decoration:underline;font:12px "Noto Sans SC",sans-serif;cursor:pointer;padding:0}
+.save-layer button:disabled{opacity:.55;cursor:wait}
+.save-notice{flex:1;font:12px "Noto Sans SC",sans-serif;color:#426e51;line-height:17px}
+.save-auto{border:2px solid #42664e;background:#6e957b;color:#fff5df;font:700 17px "Pixelify Sans",sans-serif;padding:7px 13px;cursor:pointer;box-shadow:2px 2px #59432a40}
+.save-auto:hover{background:#52775b}
+.save-layer button:focus-visible{outline:3px solid #416c50;outline-offset:3px}
+.slot-confirm-veil{position:absolute;inset:-6px;background:#231e14a3;display:flex;align-items:center;justify-content:center;z-index:2}
+.slot-confirm{width:480px;padding:26px;background:#f1dfbd;border:5px solid #8c6543;box-shadow:inset 0 0 0 2px #fff1d9,6px 7px 0 #21150955}
+.slot-confirm h2{font:700 27px "Pixelify Sans",sans-serif;margin:0 0 14px}
+.slot-confirm p{font:15px/1.6 "Noto Sans SC",sans-serif;margin:0 0 20px}
+.slot-confirm-actions{display:flex;justify-content:flex-end;gap:22px}
+#controls{height:42px;min-height:42px;display:flex;align-items:center;justify-content:space-between;width:min(1280px,100%);padding:0 14px;gap:12px;color:#bcb1a3;font-size:11px}
+#save-status{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:8px}
+.tools{flex-shrink:0}
+.tools button{border:1px solid #665747;background:#302921;color:#e8d7bc;border-radius:3px;padding:4px 10px;font:12px "Noto Sans SC",sans-serif;cursor:pointer}
+.tools button:hover{background:#485c46}
+.tools button:disabled{opacity:.5;cursor:wait;background:#302921}
+.tools button:focus-visible{outline:2px solid #f9c36b;outline-offset:2px}
+[hidden]{display:none!important}
+.loading{position:absolute;inset:0;display:grid;place-items:center;font:28px "Pixelify Sans",monospace}
+.connection-message{display:flex;flex-direction:column;justify-content:center;gap:24px;padding:80px;text-align:center}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+dialog{background:#f0ddbc;color:#443931;border:4px solid #93613d;max-width:380px;padding:24px}
+dialog::backdrop{background:#120e0abd}
+dialog h2{font:700 28px "Pixelify Sans",sans-serif;margin:0 0 12px}
+dialog p{font-size:14px}
+dialog form{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+dialog button{background:#506c51;border:2px solid #365141;color:#fff0d4;padding:8px 12px;cursor:pointer;font:700 17px "Pixelify Sans",sans-serif}
+#audio-dialog{width:min(420px,calc(100vw - 32px));max-width:420px;border-color:#9d7954;box-shadow:inset 0 0 0 2px #fff1d9,7px 8px 0 #21150955}
+.audio-heading{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.audio-heading h2{margin:0;font-size:28px}
+#close-audio{border:0;background:none;color:#73553c;padding:0 4px;font:26px/1 sans-serif}
+#audio-dialog .audio-description{margin:8px 0 22px;color:#7c654b;font-size:13px}
+.audio-setting{padding:14px 0;border-top:1px solid #bd9c75}
+.audio-toggle{display:flex;align-items:center;gap:10px;font-size:15px;cursor:pointer}
+.audio-toggle input{width:18px;height:18px;margin:0;accent-color:#52775b}
+.audio-level{display:flex;gap:12px;align-items:center;margin:12px 0 0 28px}
+.audio-level input{flex:1;min-width:0;accent-color:#52775b;cursor:pointer}
+.audio-level input:disabled{opacity:.4;cursor:default}
+.audio-level output{width:42px;text-align:right;color:#52775b;font:700 18px "Pixelify Sans",sans-serif}
+#audio-note{font-size:11px;line-height:1.6;color:#7c654b;margin:12px 0}
+#audio-dialog :focus-visible{outline:3px solid #b87932;outline-offset:4px}
+@media(max-width:600px){#controls{font-size:9px;padding:0 8px;gap:4px}.tools{gap:4px}.tools button{font-size:10px;padding:4px 6px}}
+@media(prefers-reduced-motion:no-preference){.scene.enter{animation:appear .16s ease-out}@keyframes appear{from{opacity:.75}to{opacity:1}}}
+
