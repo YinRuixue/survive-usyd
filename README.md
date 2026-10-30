@@ -2,7 +2,9 @@
 
 A pixel-art university life simulator created for the COMP9001 Python Project Challenge. Plan your weeks, manage your energy, stress and money, deal with a disappearing group member, and try to survive a semester at the University of Sydney. Your choices shape your academic results, friendships, optional romance and endings.
 
-**[▶ Play Survive USYD in your browser](https://yinruixue.github.io/survive-usyd/)**
+**[▶ Play Survive USYD in your browser](https://survive-usyd.onrender.com/)**
+
+[Alternative link: GitHub Pages](https://yinruixue.github.io/survive-usyd/). Saves are separate for each website; use **Export saves / Import saves** to transfer progress.
 
 Open the link to play immediately. No download, installation or account is needed. The online demo uses the same authored game rules through the browser engine, with nine local save slots. For assessment of the Python implementation, download the project and use the launch instructions below.
 
@@ -10,7 +12,7 @@ Open the link to play immediately. No download, installation or account is neede
 
 | What you want to do | Where to go |
 | --- | --- |
-| Play immediately | [Open the online game](https://yinruixue.github.io/survive-usyd/). |
+| Play immediately | [Open the online game](https://survive-usyd.onrender.com/). |
 | Run the complete Python project | Follow [Run the game](#run-the-game) below. |
 | Read about characters, mechanics and scoring | [Game Design Document](design-and-walkthrough/GAME_DESIGN.md) — contains spoilers. |
 | Follow a verified 100-point and successful romance route | [Perfect Score and Romance Guide](design-and-walkthrough/PERFECT_SCORE_AND_ROMANCE_GUIDE.md) — **major spoilers**. |
@@ -135,7 +137,16 @@ Node.js is not required to play the Python version.
 
 ## Online demo publishing
 
-[Publish online demo](.github/workflows/deploy-web-demo.yml) builds and checks the browser version, then deploys it to GitHub Pages when game files on `main` change. It can also be run manually from the Actions tab.
+The primary demo is a **Render Static Site**, connected to this repository's `main` branch. Render builds and publishes updates automatically with these settings:
+
+| Setting | Value |
+| --- | --- |
+| Site name | `survive-usyd` |
+| Root directory | Repository root (leave blank) |
+| Build command | `python3 html-game/tools/build-web-demo.py` |
+| Publish directory | `output/web-demo` |
+
+The [GitHub Pages workflow](.github/workflows/deploy-web-demo.yml) also builds, checks and publishes an alternative demo when game files on `main` change. It can be run manually from the Actions tab.
 
 The standard-library build command is:
 
@@ -153,4 +164,4 @@ The interface and story were developed from the project's Figma designs. Backgro
 
 Bundled fonts are [Pixelify Sans](https://github.com/google/fonts/tree/main/ofl/pixelifysans) and [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc). Their SIL Open Font License notices are included in `html-game/assets/licenses/`.
 
-The browser demo is hosted on GitHub Pages. The complete Python version is available for download and local play.
+The browser demo is hosted on Render Static Sites, with GitHub Pages available as an alternative. The complete Python version is available for download and local play.
