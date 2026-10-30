@@ -22,6 +22,7 @@ body{display:flex;flex-direction:column;align-items:center;justify-content:cente
   [data-node="5:937"],[data-node="115:82"],
   [data-node="108:66"],[data-node="108:73"],[data-node="108:76"]
 )>span{font-family:"Noto Sans SC",Arial,sans-serif;font-size:22px;font-weight:700;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.summary-status-number{font-family:"Noto Sans SC",Arial,sans-serif;font-size:22px;font-weight:700;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
 .paint{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .paint img{position:absolute;max-width:none;pointer-events:none;user-select:none}
 button.hotspot{pointer-events:auto;display:block;margin:0;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:inherit;border-radius:0;cursor:pointer;appearance:none}

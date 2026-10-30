@@ -21,6 +21,11 @@
     game.restore(saved);saveMenu.close(false);persist();render();
   }});
   const svgNodes={'65:130':'imgGameTenSegmentPrizeWheel.svg','64:15':'imgGameTenSegmentPrizeWheel.svg','65:155':'imgGameWoodenPointer.svg'};
+  // Scope readable numbers to status readouts; week headings retain their artwork font.
+  const summaryStatusNodes=new Set(data.frames.filter(f=>/^W\d+\b.*Summary/i.test(f.name))
+    .flatMap(f=>game.descendants(f.id))
+    .filter(n=>n.type==='TEXT' && ['Value','Scale','Money value','Opening balance'].includes(n.name))
+    .map(n=>n.id));
   // Display the base activity effects consistently, including descriptions from older saves.
   // Fitness recovery bonuses are applied by the game rules when the plan is executed.
   const activityDescriptions=new Map(Object.entries(data.balance?.descriptions||{}));
@@ -136,7 +141,17 @@
         color:p?paintColor(p):'#443931'
       });
       if(n.decoration==='UNDERLINE')el.style.textDecoration='underline';
-      const span=document.createElement('span');span.textContent=textFor(n);el.append(span);
+      const span=document.createElement('span'),text=textFor(n);
+      if(summaryStatusNodes.has(id) && n.name==='Opening balance') {
+        // The O-Week balance shares a text node with its pixel-art MONEY label.
+        const label=text.match(/^MONEY\s+/)?.[0]||'';
+        const amount=document.createElement('span');amount.className='summary-status-number';
+        amount.textContent=text.slice(label.length);span.append(document.createTextNode(label),amount);
+      } else {
+        span.textContent=text;
+        if(summaryStatusNodes.has(id))span.classList.add('summary-status-number');
+      }
+      el.append(span);
     } else {
       for(const p of [...(n.fills||[])].reverse())addPaint(el,p);
       if(svgNodes[id]) {
