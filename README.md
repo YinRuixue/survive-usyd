@@ -2,12 +2,22 @@
 
 A pixel-art university life simulator created for the COMP9001 Python Project Challenge. Plan your weeks, manage your energy, stress and money, deal with a disappearing group member, and try to survive a semester at the University of Sydney. Your choices shape your academic results, friendships, optional romance and endings.
 
-![Survive USYD gameplay](docs/gameplay.png)
+## Start here — for players and assessors
 
-## Game documentation
+| What you want to do | Where to go |
+| --- | --- |
+| Run the complete Python project | Follow [Run the game](#run-the-game) below. |
+| Read about characters, mechanics and scoring | [Game Design Document](design-and-walkthrough/GAME_DESIGN.md) — contains spoilers. |
+| Follow a verified 100-point and successful romance route | [Perfect Score and Romance Guide](design-and-walkthrough/PERFECT_SCORE_AND_ROMANCE_GUIDE.md) — **major spoilers**. |
+| Review the main Python program | [Python code guide](backend/README.md), starting with [server.py](backend/server.py). |
+| Understand the browser interface and assets | [Browser interface guide](html-game/README.md). |
+| Check functionality | See [Tests](#tests) below. |
 
-- [Game Design Document](docs/GAME_DESIGN.md): characters, semester flow, activity values, scoring formulas and ending conditions. Contains spoilers.
-- [100 Points + Successful Romance Walkthrough](docs/WALKTHROUGH.md): a verified weekly plan and key choices for both protagonist routes and all ten wheel rewards. **Major spoilers.**
+**What is `backend`?** It is the Python part of the game: it handles game rules, scoring, story decisions and saves. `html-game` contains the browser interface that displays the game and sends actions to Python.
+
+![Survive USYD gameplay](screenshots/gameplay.png)
+
+*This is a gameplay preview for this README. Display screenshots live in `screenshots/`; in-game artwork remains in `html-game/assets/`.*
 
 ## Run the game
 
@@ -63,24 +73,35 @@ The project demonstrates:
 ## Project layout
 
 ```text
-backend/
-  server.py                 Python entry point and local HTTP server
-  game_backend/engine.py    Story, planning and game-rule execution
-  game_backend/store.py     SQLite persistence and request transactions
-  tests/                    Python tests and compressed route fixtures
-html-game/
-  index.html                Browser interface
-  app.js                    Scene rendering and interaction
-  backend-client.js         Connection to the Python server
-  data/game.json            Shared authored scenes and rules
-  engine.js                 Optional standalone browser rule engine
-  assets/                   Bundled images, fonts and audio
-  tools/                    Tests and development utilities
-docs/gameplay.png           Gameplay screenshot
-docs/GAME_DESIGN.md         Characters, mechanics and numerical rules
-docs/WALKTHROUGH.md         100-point result and successful romance guide
-Start Game.command          macOS launcher
+README.md                         Start here: run, review and test the project
+Start Game.command                Double-click launcher for macOS
+开始游戏.txt                      Short Chinese launch instructions
+
+design-and-walkthrough/           Written design and strategy documents
+  GAME_DESIGN.md                  Characters, mechanics, formulas and endings
+  PERFECT_SCORE_AND_ROMANCE_GUIDE.md
+                                  Verified weekly plan and key choices
+screenshots/                      Images used to present the project
+  gameplay.png                    README gameplay preview
+
+backend/                          Main Python program
+  README.md                       Python code map, API and testing details
+  server.py                       Entry point and local HTTP server
+  game_backend/engine.py          Story, planning and game-rule execution
+  game_backend/store.py           SQLite save storage and request transactions
+  tests/                          Python tests and compressed route fixtures
+
+html-game/                        Browser interface and bundled game assets
+  README.md                       Interface code map and standalone-mode notes
+  index.html                      Browser page
+  app.js                          Scene rendering and interaction
+  backend-client.js               Connection to the Python server
+  data/game.json                  Shared authored scenes and rules
+  assets/                         In-game images, fonts and audio
+  tools/                          Optional tests and development utilities
 ```
+
+`backend/data/` is created locally for saves and is not uploaded. Development notes, intermediate exports and generated archives are also excluded from the repository. The screenshot and written guides are not needed by the running game.
 
 ## Tests
 

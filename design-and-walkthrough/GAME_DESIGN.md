@@ -3,7 +3,7 @@
 **Rules reviewed:** 30 October 2026 · activity balance version 2  
 **Scope:** the current playable Python/HTML game. This document describes implemented rules, not proposed features. It contains story and ending spoilers.
 
-[Project and launch instructions](../README.md) · [100% score + successful romance walkthrough](WALKTHROUGH.md)
+[Project and launch instructions](../README.md) · [100% score + successful romance walkthrough](PERFECT_SCORE_AND_ROMANCE_GUIDE.md)
 
 ## 1. Concept and player experience
 
