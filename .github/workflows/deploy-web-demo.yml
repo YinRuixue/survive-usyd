@@ -1,0 +1,51 @@
+name: Publish online demo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'html-game/**'
+      - '.github/workflows/deploy-web-demo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the game
+        uses: actions/checkout@v6
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Build browser-only demo
+        run: python3 html-game/tools/build-web-demo.py
+      - name: Check browser game rules and saves
+        run: |
+          node html-game/tools/test-game.js
+          node html-game/tools/test-saves.js
+          node html-game/tools/test-wheel.js
+          node html-game/tools/test-display-format.js
+          node html-game/tools/test-audio.js
+      - name: Upload the playable site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: output/web-demo
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish game
+        id: deployment
+        uses: actions/deploy-pages@v4
