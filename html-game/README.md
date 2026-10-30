@@ -2,7 +2,7 @@
 
 [Back to the project overview](../README.md) · [Python program guide](../backend/README.md)
 
-**[Play online](https://yinruixue.github.io/survive-usyd/)** — opens directly in your browser with no installation or account.
+**[Play online](https://survive-usyd.onrender.com/)** — opens directly in your browser with no installation or account. [GitHub Pages alternative](https://yinruixue.github.io/survive-usyd/).
 
 This folder contains the game's **visual interface**: scenes, dialogue, menus, animation, music and artwork. For the complete Python project, start the game from the repository root:
 
@@ -38,11 +38,11 @@ A static web host or GitHub Pages cannot run the Python server. Keep this folder
 
 ## Published browser demo
 
-The online demo uses this same browser engine and local save store over HTTPS. Its entry page explicitly selects browser mode; it does not need a Python API. Saves remain in that browser and can be exported/imported through the game menus.
+The online demo uses this same browser engine and local save store over HTTPS. Its entry page explicitly selects browser mode; it does not need a Python API. Saves remain in that browser and can be exported/imported through the game menus. The Render and GitHub Pages sites have separate saves; use Export/Import when switching sites.
 
 From the repository root, run `python3 html-game/tools/build-web-demo.py` to create `output/web-demo/`. For local inspection, serve that generated directory with `python3 -m http.server 8874 --bind 127.0.0.1 --directory output/web-demo` and open `http://127.0.0.1:8874`.
 
-The [GitHub Pages workflow](../.github/workflows/deploy-web-demo.yml) builds, tests and publishes this directory automatically. It excludes developer utilities and player databases. The source `index.html` retains automatic local-file/Python selection, so the desktop Python launcher still works as before.
+Render Static Sites builds the primary demo from `main` using that build command and `output/web-demo` as the publish directory. The [GitHub Pages workflow](../.github/workflows/deploy-web-demo.yml) builds, tests and publishes the same directory as an alternative. The build excludes developer utilities and player databases. The source `index.html` retains automatic local-file/Python selection, so the desktop Python launcher still works as before.
 
 ## Artwork and presentation images
 
