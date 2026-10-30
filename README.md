@@ -2,10 +2,15 @@
 
 A pixel-art university life simulator created for the COMP9001 Python Project Challenge. Plan your weeks, manage your energy, stress and money, deal with a disappearing group member, and try to survive a semester at the University of Sydney. Your choices shape your academic results, friendships, optional romance and endings.
 
+**[▶ Play Survive USYD in your browser](https://yinruixue.github.io/survive-usyd/)**
+
+Open the link to play immediately. No download, installation or account is needed. The online demo uses the same authored game rules through the browser engine, with nine local save slots. For assessment of the Python implementation, download the project and use the launch instructions below.
+
 ## Start here — for players and assessors
 
 | What you want to do | Where to go |
 | --- | --- |
+| Play immediately | [Open the online game](https://yinruixue.github.io/survive-usyd/). |
 | Run the complete Python project | Follow [Run the game](#run-the-game) below. |
 | Read about characters, mechanics and scoring | [Game Design Document](design-and-walkthrough/GAME_DESIGN.md) — contains spoilers. |
 | Follow a verified 100-point and successful romance route | [Perfect Score and Romance Guide](design-and-walkthrough/PERFECT_SCORE_AND_ROMANCE_GUIDE.md) — **major spoilers**. |
@@ -57,6 +62,8 @@ The intended project entry point is `backend/server.py`. Opening `html-game/inde
 The Python server creates `backend/data/survive.sqlite3` automatically. This database is local to your computer and is not included in the repository. Automatic progress and nine manual save slots are associated with your browser profile. Starting a new game keeps your manual saves.
 
 Use **Export saves** to make a backup before changing browsers or clearing browser data. **Import saves** fills empty slots without replacing existing saves. The game has no online accounts or cloud synchronization.
+
+The online demo stores its nine slots and automatic progress in the current browser on the game website. They are separate from Python and file-based saves. Use Export/Import to transfer progress; private browsing or clearing site data may remove browser saves.
 
 ## Python implementation
 
@@ -126,6 +133,18 @@ node html-game/tools/test-audio.js
 
 Node.js is not required to play the Python version.
 
+## Online demo publishing
+
+[Publish online demo](.github/workflows/deploy-web-demo.yml) builds and checks the browser version, then deploys it to GitHub Pages when game files on `main` change. It can also be run manually from the Actions tab.
+
+The standard-library build command is:
+
+```sh
+python3 html-game/tools/build-web-demo.py
+```
+
+This generates `output/web-demo/` with browser mode selected and versioned script/style URLs. Only runtime files and game assets are published. Python source, databases, tests and design documents remain in the repository rather than the playable site's output. The original local HTTP game continues to use Python; it does not silently switch engines if its server is unavailable.
+
 ## Notes and credits
 
 Survive USYD is a fictional student project, not an official University of Sydney product. Characters, events and game grading rules are designed for the game.
@@ -134,4 +153,4 @@ The interface and story were developed from the project's Figma designs. Backgro
 
 Bundled fonts are [Pixelify Sans](https://github.com/google/fonts/tree/main/ofl/pixelifysans) and [Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc). Their SIL Open Font License notices are included in `html-game/assets/licenses/`.
 
-This repository provides the project for download and local play. Uploading it to GitHub does not publish an online game server.
+The browser demo is hosted on GitHub Pages. The complete Python version is available for download and local play.
