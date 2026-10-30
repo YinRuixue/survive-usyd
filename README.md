@@ -4,6 +4,11 @@ A pixel-art university life simulator created for the COMP9001 Python Project Ch
 
 ![Survive USYD gameplay](docs/gameplay.png)
 
+## Game documentation
+
+- [Game Design Document](docs/GAME_DESIGN.md): characters, semester flow, activity values, scoring formulas and ending conditions. Contains spoilers.
+- [100 Points + Successful Romance Walkthrough](docs/WALKTHROUGH.md): a verified weekly plan and key choices for both protagonist routes and all ten wheel rewards. **Major spoilers.**
+
 ## Run the game
 
 **Requirements:** Python 3.9 or newer and a modern web browser. The Python version uses only the standard library; no `pip install` step is needed. All game images, fonts and audio are included.
@@ -72,6 +77,8 @@ html-game/
   assets/                   Bundled images, fonts and audio
   tools/                    Tests and development utilities
 docs/gameplay.png           Gameplay screenshot
+docs/GAME_DESIGN.md         Characters, mechanics and numerical rules
+docs/WALKTHROUGH.md         100-point result and successful romance guide
 Start Game.command          macOS launcher
 ```
 
